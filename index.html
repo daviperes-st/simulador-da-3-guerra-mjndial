@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 g GERRA MUNDIAL</title>
+    <link rel="shortcut icon" href="https://i.postimg.cc/4dhf2XcR/favicon.png" type="image/png">
+    <style>
+    body{
+    font-family:Arial, Helvetica, sans-serif;
+    text-align:center;
+    background-color:black;
+    color:gray;
+    }
+
+    #game-container{
+    max-width:600px;
+    margin:auto;
+    padding:20px;
+    border:2px solid white;
+    background-color:#222;
+    border-radius:10px;
+    }
+
+    img {
+    width:100%;
+    border-radius:10px;
+    }
+
+    .choice{
+        display:block;
+        margin:10px auto;
+        padding:10px;
+        width:80%;
+        font-size:18px;
+        cursor:pointer;
+        background-color:red;
+        color:white;
+        border:none;
+        border-radius:5px;
+    }
+    </style>
+</head>
+<body>
+<div id="game-container">
+    <h2 id="title">3 GUERRA MUNDIAL</h2>
+    <img id="scene-img" src="cena inicial 3 gurrra mundial.png" alt="cena do jogo">
+    <p id="story">a 3 GUERRA MUNDIAL COMEÇOU . O que você faz?</p>
+    <button class="choice" onclick="escolha('ajudar')">AJUDAR NA GERRA</button>
+    <button class="choice" onclick="escolha('correr')">NÃO AJUDAR</button>
+</div>
+
+<script>
+    function escolha(opcao){
+        let titulo = document.getElementById("title");
+        let imagem = document.getElementById("scene-img");
+        let historia = document.getElementById("story");
+        let botoes = document.querySelectorAll(".choice");
+
+        if(opcao==='ajudar') {
+            titulo.innerText = "3 guerra mundial";
+            imagem.src = "ajudar.png";
+            historia.innerText = "qual você escolhe. arma ou granada?";
+            botoes[0].innerText = "ARMA";
+            botoes[0].setAttribute("onclick","escolha('arma')");
+            botoes[1].innerText = "GRANADA";
+            botoes[1].setAttribute("onclick", "escolha('granada')");
+
+        }
+        else if (opcao === 'correr') {
+            titulo.innerText = "você saiu correndo";
+            imagem.src = "correndo.png";
+            historia.innerText = "QUAL VOCÊ ESCOLHE";
+            botoes[0].innerText = "procurar um carro";
+            botoes[0].setAttribute("onclick", "escolha('dirigir')");
+            botoes[1].innerText = "sair correndo";
+            botoes[1].setAttribute("onclick", "escolha('fugir')");
+        }
+        else if (opcao === 'arma') {
+             titulo.innerText = "você ficou";
+             imagem.src = "cena-final.png";
+             historia.innerText = "VOCÊ VENCEU A GUERRA!!!!";
+             botoes.forEach(botao =>botao.style.display = "none");
+                
+        }
+        
+        else if (opcao === 'granada') {
+             titulo.innerText = "VOCÊ LANÇOU A GRANADA";
+             imagem.src = "granada.png";
+             historia.innerText = "a granada explodiu.Você morreu!";
+             botoes.forEach(botao =>botao.style.display = "none");
+                
+        }
+           
+        else if (opcao === 'dirigir') {
+             titulo.innerText = "você procurou um carro e não achou.Está morrendo de fome";
+             imagem.src = "soldado-fome.png";
+             historia.innerText = "você perdeu!";
+             botoes.forEach(botao =>botao.style.display = "none");
+                
+        }
+    
+        else if (opcao === 'fugir') {
+             titulo.innerText = "os inimigos te encontraram";
+             imagem.src = "soldado-cercado.png";
+             historia.innerText = "você perdeu!";
+             botoes.forEach(botao =>botao.style.display = "none");
+        
+        }
+    }
+</script>
+</body>
+</html>
